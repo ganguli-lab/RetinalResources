@@ -40,6 +40,8 @@ parser.add_argument('--noise_end', type=float, default=0.0,
                     help='Retinal output noise')
 parser.add_argument('--retina_out_weight_reg', type=float, default=0.0,
                     help='L1 regularization on retinal output weights')
+parser.add_argument('--reg', type=float, default=0.0,
+                    help='L1 weight regularization for layers besides the retinal output layer')
 parser.add_argument('--retina_hidden_channels', type=int, default=32,
                     help='Channels in hidden layers of retina')
 parser.add_argument('--retina_out_stride', type=int, default=1,
@@ -63,17 +65,7 @@ parser.add_argument('--vvs_width', type=int, default=32,
 parser.add_argument('--epochs', type=int, default=20,
                     help='Number of epochs to train model')
 
-# Optional positional argument
-parser.add_argument('opt_pos_arg', type=int, nargs='?',
-                    help='An optional integer positional argument')
 
-# Optional argument
-parser.add_argument('--opt_arg', type=int,
-                    help='An optional integer argument')
-
-# Switch
-parser.add_argument('--switch', action='store_true',
-                    help='A boolean switch')
 
 args = parser.parse_args()
 
@@ -93,15 +85,15 @@ actreg = args.actreg
 retina_out_width = args.retina_out_width
 vvs_width = args.vvs_width
 epochs = args.epochs
+reg = args.reg
 
 data_augmentation = True
 
 save_dir = os.path.join(os.getcwd(), 'saved_models')
-model_name = 'cifar10_type_'+trial_label+'_NS_'+str(noise_start)+'_NE_'+str(noise_end)+'_reg_'+str(retina_out_weight_reg)+'_FC_'+str(retina_hidden_channels)+'_SS_'+str(retina_out_stride)+'_task_'+task+'_filter_size_'+str(filter_size)+'_retina_layers_'+str(retina_layers)+'_vvs_layers'+str(vvs_layers)+'_bias_'+str(use_b)+'_actreg_'+str(actreg)+'_retina_out_channels_'+str(retina_out_width)+'_brnC_'+str(vvs_width)+'_epochs_'+str(epochs)
+model_name = 'cifar10_type_'+trial_label+'_noise_start_'+str(noise_start)+'_noise_end_'+str(noise_end)+'_reg_'+str(reg)+'_retina_reg_'+str(retina_out_weight_reg)+'_retina_hidden_channels_'+str(retina_hidden_channels)+'_SS_'+str(retina_out_stride)+'_task_'+task+'_filter_size_'+str(filter_size)+'_retina_layers_'+str(retina_layers)+'_vvs_layers'+str(vvs_layers)+'_bias_'+str(use_b)+'_actreg_'+str(actreg)+'_retina_out_channels_'+str(retina_out_width)+'_vvs_width_'+str(vvs_width)+'_epochs_'+str(epochs)
 
 batch_size = 64
 num_classes = 10
-reg = 0.0
 
 if not os.path.isdir(save_dir):
     os.makedirs(save_dir)
@@ -260,8 +252,8 @@ if not os.path.isdir(save_dir):
 model_name = 'SAVED'+'_'+model_name
 model_path = os.path.join(save_dir, model_name)
 model.save(model_path)
-np.save(model_name+'_VALACC.npy', hist.history['val_acc'])
-np.save(model_name+'_ACC.npy', hist.history['acc'])
+np.save('Logs/'+model_name+'_VALACC.npy', hist.history['val_acc'])
+np.save('Logs/'+model_name+'_ACC.npy', hist.history['acc'])
 
 print('Saved trained model at %s ' % model_path)
 
