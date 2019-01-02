@@ -4,7 +4,7 @@ This code implements experiments described in the paper "The Effects of Neural R
 
 -- TrainModel.py implements the (parameterizable) model architecture and training scheme.   Trained models are saved in the saved_models directory.  Model performance histories are saved in the Logs directory.
 
--- TrainAllModels.ipynb provides uses TrainModel.py to train multiple model architectures with specified parameters, for multiple trials (i.e. different random weight initializations).
+-- TrainAllModels.ipynb uses TrainModel.py to train multiple model architectures with specified parameters, for multiple trials (i.e. different random weight initializations).
 
 -- PlotPerformance.ipynb is used to show the performance (on the CIFAR 10 test set, after training) of different model architecture parameter settings.
 
