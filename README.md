@@ -14,6 +14,8 @@ This code implements experiments described in the paper "The Effects of Neural R
 
 -- ProcessAllRFs.py calls VisualizeRFs.py and VisualizeRFsRandomInits.py for trained models with specified parameters and trial numbers.
 
+-- CalculateLinearityAndLinearSeparability.ipynb computes the linearity of layer responses and the linear separability of object classes in layer activation space for all models and layers
+
 -- Quantify_Orientedness.ipynb quantifies and visualizes (in polar plots) the orientedness / isotropy of the relevant model receptive fields, as well as of model weight matrices.
 
 -- Quantify_Complexity.ipynb quantifies the extent to which first-order approximations of model receptive fields vary according to the random initialization used in the gradient ascent approximation.
