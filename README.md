@@ -2,6 +2,8 @@
 
 This code implements experiments described in the paper "The Effects of Neural Resource constraints on Early Visual Representations," to be presented at ICLR 2019 (https://openreview.net/pdf?id=S1xq3oR5tQ).
 
+--BottleneckYieldsCenterSurround.ipynb reproduces a core result of the paper, namely that enforcing a dimensionality bottleneck at an early layer of a CNN causes retina-like center-surround receptive fields to be learned
+
 -- TrainModel.py implements the (parameterizable) model architecture and training scheme.   Trained models are saved in the saved_models directory.  Model performance histories are saved in the Logs directory.
 
 -- TrainAllModels.ipynb provides uses TrainModel.py to train multiple model architectures with specified parameters, for multiple trials (i.e. different random weight initializations).
