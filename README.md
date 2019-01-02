@@ -23,3 +23,4 @@ This code implements experiments described in the paper "The Effects of Neural R
 -- **Quantify_Complexity.ipynb** quantifies the extent to which first-order approximations of model receptive fields vary according to the random initialization used in the gradient ascent approximation (fig. 5).
 
 
+Missing code: LGN (fig 2D), local normalization layers (fig 6), untied weights experiment (fig 2E,F).
